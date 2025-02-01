@@ -27,7 +27,12 @@ export const quizSlice = createSlice({
         state.currentQuestionIndex += 1;
       }
     },
+    previousQuestion: (state) => {
+      if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex -= 1;
+      }
+    },
   },
 });
-export const { setAnswer, nextQuestion } = quizSlice.actions;
+export const { setAnswer, nextQuestion, previousQuestion } = quizSlice.actions;
 export default quizSlice.reducer;
