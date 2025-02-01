@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { setAnswer } from "@/redux/features/quiz/quizSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import QuizControl from "./QuizControl";
 
 const Question = () => {
   const dispatch = useAppDispatch();
@@ -48,6 +49,7 @@ const Question = () => {
               </Button>
             ))}
           </div>
+          <QuizControl />
         </CardContent>
       </Card>
     </div>
