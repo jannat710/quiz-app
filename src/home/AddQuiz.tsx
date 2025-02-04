@@ -23,7 +23,7 @@ type QuizData = {
   }[];
 };
 const AddQuiz = () => {
-  const [addQuiz, { isLoading, isError, isSuccess }] = useAddQuizApiMutation();
+  const [addQuiz, { isSuccess }] = useAddQuizApiMutation();
   const [step, setStep] = useState(1);
   const [addQuestionStep, setAddQuestionStep] = useState(1);
   const [quizData, setQuizData] = useState<QuizData>({
@@ -82,7 +82,8 @@ const AddQuiz = () => {
   const prevStep = () => setStep((prev) => prev - 1);
 
   const handleSubmit = async () => {
-    console.log(quizData);
+    const result = await addQuiz(quizData);
+    console.log(result);
   };
 
   return (
@@ -205,11 +206,26 @@ const AddQuiz = () => {
           {addQuestionStep === 3 && (
             <div>
               <Label>Correct Answer</Label>
-              <select
+              {/* <select
                 value={newQuestion.correctAnswer}
                 onChange={(e) => handleCorrectAnswerSelect(e.target.value)}
                 className="w-full p-2 mt-2 border rounded-md"
               >
+                {newQuestion.options.map((option, i) => (
+                  <option key={i} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select> */}
+              <select
+                aria-label="Select the correct answer"
+                value={newQuestion.correctAnswer}
+                onChange={(e) => handleCorrectAnswerSelect(e.target.value)}
+                className="w-full p-2 mt-2 border rounded-md"
+              >
+                <option value="" disabled>
+                  Select the correct answer
+                </option>
                 {newQuestion.options.map((option, i) => (
                   <option key={i} value={option}>
                     {option}
