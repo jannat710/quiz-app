@@ -6,7 +6,17 @@ export const quizApi = createApi({
     getAllQuiz: builder.query({
       query: () => `/quizzes`,
     }),
+    addQuizApi: builder.mutation({
+      query: (body) => (
+        console.log(body),
+        {
+          url: `/quizzes`,
+          method: "POST",
+          body,
+        }
+      ),
+    }),
   }),
 });
 
-export const { useGetAllQuizQuery } = quizApi;
+export const { useGetAllQuizQuery, useAddQuizApiMutation } = quizApi;

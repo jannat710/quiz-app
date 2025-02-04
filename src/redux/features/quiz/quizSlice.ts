@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type TQuiz = {
   _id: string;
-  name: string;
+  title: string;
   description: string;
   questions: TQuizData[];
   createdAt: Date;

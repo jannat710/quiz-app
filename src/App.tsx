@@ -1,3 +1,4 @@
+import AddQuiz from "./home/AddQuiz";
 import AllQuiz from "./home/AllQuiz";
 import Question from "./home/Question";
 import QuizSummary from "./home/QuizSummary";
@@ -8,7 +9,8 @@ function App() {
   return (
     <div className="container mx-auto p-4">
       <h3 className="text-center font-bold text-4xl my-12">Quiz App</h3>
-      <AllQuiz></AllQuiz>
+      <AddQuiz />
+      <AllQuiz />
       {!quizComplete ? <Question /> : <QuizSummary />}
     </div>
   );
